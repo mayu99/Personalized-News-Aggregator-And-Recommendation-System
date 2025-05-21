@@ -1,0 +1,38 @@
+<article class="article-card">
+    <div class="article-header">
+        <h2 class="article-title">
+            <a href="{% url 'news:article_detail' article.id %}">{{ article.title }}</a>
+        </h2>
+        <div class="article-meta">
+            <span class="article-date">
+                <i class="far fa-calendar"></i> {{ article.published_at|date:"M d, Y" }}
+            </span>
+            {% if article.author %}
+                <span class="article-author">
+                    <i class="far fa-user"></i> {{ article.author }}
+                </span>
+            {% endif %}
+            <span class="article-source">
+                <i class="far fa-newspaper"></i> {{ article.source }}
+            </span>
+        </div>
+        <div class="article-tags">
+            <span class="category-badge">{{ article.category }}</span>
+            <span class="sentiment-badge sentiment-{{ article.sentiment }}">
+                <i class="fas {% if article.sentiment == 'positive' %}fa-smile{% elif article.sentiment == 'negative' %}fa-frown{% else %}fa-meh{% endif %}"></i>
+                {{ article.sentiment|title }}
+            </span>
+        </div>
+    </div>
+    <div class="article-summary">
+        {{ article.display_summary }}
+    </div>
+    <div class="article-footer">
+        <a href="{% url 'news:article_detail' article.id %}" class="read-more">
+            <i class="fas fa-book-reader"></i> Read More
+        </a>
+        <a href="{{ article.url }}" target="_blank" class="source-link">
+            <i class="fas fa-external-link-alt"></i> View Source
+        </a>
+    </div>
+</article> 

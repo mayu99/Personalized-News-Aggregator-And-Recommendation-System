@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Latest News - Personalized News Aggregator{% endblock %}
+
+{% block content %}
+<div class="news-container">
+    <h1>Latest News</h1>
+    {% if articles %}
+        <div class="articles-grid">
+            {% for article in articles %}
+                <article class="news-card">
+                    <h2>{{ article.title }}</h2>
+                    <p class="article-meta">{{ article.published_date }}</p>
+                    <p class="article-excerpt">{{ article.content|truncatewords:30 }}</p>
+                    <a href="{% url 'article_detail' article.id %}" class="read-more">Read More</a>
+                </article>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No articles available.</p>
+    {% endif %}
+</div>
+{% endblock %} 

@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} - News Aggregator{% endblock %}
+
+{% block content %}
+<div class="container">
+    <article class="article-full">
+        <h1 class="article-title">{{ article.title }}</h1>
+        
+        <div class="article-meta">
+            {% if article.published_at %}
+            <time datetime="{{ article.published_at|date:'Y-m-d' }}">{{ article.published_at|date:"F j, Y" }}</time>
+            {% endif %}
+            {% if article.author %}by {{ article.author }}{% endif %}
+            {% if article.source %}• {{ article.source }}{% endif %}
+            {% if article.url %}
+            • <a href="{{ article.url }}" class="source-link" target="_blank">Read original article</a>
+            {% endif %}
+        </div>
+
+        {% if article.display_summary %}
+        <section class="article-summary">
+            <h2>Summary</h2>
+            <div class="summary-content">
+                {{ article.display_summary|linebreaks }}
+            </div>
+        </section>
+        {% endif %}
+
+        <section class="article-content">
+            <h2>Full Article</h2>
+            <div class="content-body">
+                {{ article.display_content|linebreaks }}
+            </div>
+        </section>
+
+        <div class="article-navigation">
+            <a href="{% url 'news:index' %}" class="back-link">← Back to articles</a>
+        </div>
+    </article>
+</div>
+
+{% if related_articles %}
+<section class="related-articles-section">
+    <h2>Related Articles</h2>
+    <div class="related-articles-list">
+        {% for related in related_articles %}
+        <div class="related-article-card">
+            <h3><a href="{% url 'news:article_detail' related.id %}">{{ related.title }}</a></h3>
+            <div class="related-article-meta">
+                {% if related.published_at %}
+                <span>{{ related.published_at|date:"M d, Y" }}</span>
+                {% endif %}
+                {% if related.source %}
+                <span>• {{ related.source }}</span>
+                {% endif %}
+            </div>
+            <div class="related-article-summary">
+                {{ related.summary|default:related.content|truncatewords:30 }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+<style>
+    .article-detail {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        padding: 2rem;
+        margin-top: 2rem;
+    }
+
+    .article-detail .article-title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+    }
+
+    .article-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        color: #666;
+        margin-bottom: 2rem;
+        align-items: center;
+    }
+
+    .article-meta .source-link {
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .article-meta .source-link:hover {
+        text-decoration: underline;
+    }
+
+    .article-summary, .article-content {
+        background: var(--background-color);
+        border-radius: 8px;
+        padding: 2rem;
+        margin: 2rem 0;
+    }
+
+    .article-summary h2, .article-content h2 {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .summary-content, .content-text {
+        line-height: 1.8;
+        color: var(--text-color);
+        white-space: pre-line;
+    }
+
+    .article-navigation {
+        margin-top: 2rem;
+    }
+
+    .back-link {
+        display: inline-block;
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+    }
+
+    .back-link:hover {
+        color: var(--primary-color);
+    }
+
+    .related-articles-section {
+        margin-top: 3rem;
+        padding: 1.5rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+    }
+    .related-articles-section h2 {
+        margin-bottom: 1.5rem;
+        color: #495057;
+    }
+    .related-articles-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+    .related-article-card {
+        background: white;
+        border-radius: 6px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        min-height: 120px;
+    }
+    .related-article-card h3 {
+        font-size: 1.1rem;
+        margin: 0 0 0.5rem 0;
+    }
+    .related-article-meta {
+        font-size: 0.9rem;
+        color: #888;
+        margin-bottom: 0.5rem;
+    }
+    .related-article-summary {
+        color: #555;
+        font-size: 0.95rem;
+    }
+</style>
+{% endblock %}

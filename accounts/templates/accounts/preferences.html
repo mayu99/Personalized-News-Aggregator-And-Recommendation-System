@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block title %}News Preferences - News Aggregator{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="preferences-container">
+        <h2>News Preferences</h2>
+        <p class="lead">Customize your news feed by selecting your interests</p>
+
+        <form method="post" novalidate>
+            {% csrf_token %}
+            
+            <div class="form-section">
+                <h3>Categories</h3>
+                <p class="help-text">Select the news categories you're interested in:</p>
+                <div class="categories-grid">
+                    {% for value, label in categories %}
+                    <div class="category-item">
+                        <input type="checkbox" name="categories" value="{{ value }}" 
+                               id="category_{{ value }}"
+                               {% if value in form.instance.categories %}checked{% endif %}>
+                        <label for="category_{{ value }}">{{ label }}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Keywords</h3>
+                {{ form.keywords.label_tag }}
+                {{ form.keywords }}
+                {% if form.keywords.help_text %}
+                <small class="help-text">{{ form.keywords.help_text }}</small>
+                {% endif %}
+                {% for error in form.keywords.errors %}
+                <div class="alert alert-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-section">
+                <h3>Excluded Sources</h3>
+                {{ form.excluded_sources.label_tag }}
+                {{ form.excluded_sources }}
+                {% if form.excluded_sources.help_text %}
+                <small class="help-text">{{ form.excluded_sources.help_text }}</small>
+                {% endif %}
+                {% for error in form.excluded_sources.errors %}
+                <div class="alert alert-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="btn btn-primary">Save Preferences</button>
+                <a href="{% url 'news:index' %}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+.preferences-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.lead {
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.form-section {
+    margin-bottom: 2rem;
+}
+
+.form-section h3 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.help-text {
+    color: #666;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.category-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.category-item input[type="checkbox"] {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.category-item label {
+    margin: 0;
+    cursor: pointer;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    text-decoration: none;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    border-radius: 4px;
+}
+</style>
+{% endblock %} 

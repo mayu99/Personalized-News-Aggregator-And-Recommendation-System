@@ -1,0 +1,357 @@
+{% extends "base.html" %}
+
+{% block title %}Latest News - News Aggregator{% endblock %}
+
+{% block content %}
+<div class="content-header">
+    <h1>Latest News</h1>
+    {% if user.is_authenticated %}
+        <a href="{% url 'accounts:preferences' %}" class="preferences-link">
+            <i class="fas fa-cog"></i> Customize Your Feed
+        </a>
+    {% endif %}
+</div>
+
+{% if user.is_authenticated and recommended_articles %}
+<div class="recommended-section">
+    <h2><i class="fas fa-star"></i> Recommended for You</h2>
+    <div class="article-grid recommended-grid">
+        {% for article in recommended_articles %}
+            {% include "news/includes/article_card.html" with article=article %}
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+<div class="sorting-controls">
+    <form method="get" class="sort-form">
+        <label for="sort">Sort by:</label>
+        <select name="sort" id="sort" onchange="this.form.submit()">
+            {% for value, label in sort_options %}
+            <option value="{{ value }}" {% if value == current_sort %}selected{% endif %}>{{ label }}</option>
+            {% endfor %}
+        </select>
+    </form>
+</div>
+
+<div class="article-grid">
+    {% if articles %}
+        {% for article in articles %}
+            {% include "news/includes/article_card.html" with article=article %}
+        {% endfor %}
+    {% else %}
+        <div class="no-articles">
+            <i class="fas fa-newspaper"></i>
+            <h2>No Articles Found</h2>
+            {% if user.is_authenticated %}
+                <p>Try adjusting your news preferences to see more articles.</p>
+                <a href="{% url 'accounts:preferences' %}" class="button">Update Preferences</a>
+            {% else %}
+                <p>Please log in to customize your news feed.</p>
+                <a href="{% url 'accounts:login' %}" class="button">Log In</a>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+
+<style>
+    .content-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    .preferences-link {
+        color: #666;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+    }
+
+    .preferences-link:hover {
+        background-color: #f5f5f5;
+    }
+
+    .sorting-controls {
+        margin-bottom: 2rem;
+    }
+
+    .sort-form {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .sort-form select {
+        padding: 0.5rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: white;
+    }
+
+    .article-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .article-card {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.2s;
+    }
+
+    .article-card:hover {
+        transform: translateY(-2px);
+    }
+
+    .article-header {
+        margin-bottom: 1rem;
+    }
+
+    .article-title {
+        font-size: 1.25rem;
+        margin: 0 0 0.5rem 0;
+    }
+
+    .article-title a {
+        color: #333;
+        text-decoration: none;
+    }
+
+    .article-title a:hover {
+        color: #007bff;
+    }
+
+    .article-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        font-size: 0.875rem;
+        color: #666;
+        margin-bottom: 0.5rem;
+    }
+
+    .article-tags {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .category-badge {
+        background-color: #e9ecef;
+        color: #495057;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+    }
+
+    .sentiment-badge {
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+
+    .sentiment-positive {
+        background-color: #d4edda;
+        color: #155724;
+    }
+
+    .sentiment-negative {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+
+    .sentiment-neutral {
+        background-color: #fff3cd;
+        color: #856404;
+    }
+
+    .article-summary {
+        color: #666;
+        margin-bottom: 1rem;
+        flex-grow: 1;
+    }
+
+    .article-footer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: auto;
+    }
+
+    .read-more, .source-link {
+        color: #007bff;
+        text-decoration: none;
+        font-size: 0.875rem;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+
+    .read-more:hover, .source-link:hover {
+        text-decoration: underline;
+    }
+
+    .no-articles {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 3rem;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .no-articles i {
+        font-size: 3rem;
+        color: #ddd;
+        margin-bottom: 1rem;
+    }
+
+    .no-articles h2 {
+        color: #666;
+        margin-bottom: 1rem;
+    }
+
+    .button {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        margin-top: 1rem;
+    }
+
+    .button:hover {
+        background-color: #0056b3;
+    }
+
+    .recommended-section {
+        margin-bottom: 3rem;
+        padding: 1.5rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+    }
+
+    .recommended-section h2 {
+        margin-bottom: 1.5rem;
+        color: #495057;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .recommended-section h2 i {
+        color: #ffc107;
+    }
+
+    .recommended-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+</style>
+
+{% block extra_js %}
+<script>
+    // WebSocket connection
+    const newsSocket = new WebSocket(
+        'ws://' + window.location.host + '/ws/news/'
+    );
+
+    newsSocket.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+        
+        if (data.type === 'new_article') {
+            const article = data.article;
+            const articleGrid = document.querySelector('.article-grid');
+            
+            // Create new article card
+            const articleCard = document.createElement('article');
+            articleCard.className = 'article-card';
+            articleCard.innerHTML = `
+                <div class="article-header">
+                    <h2 class="article-title">
+                        <a href="/news/article/${article.id}/">${article.title}</a>
+                    </h2>
+                    <div class="article-meta">
+                        <span class="article-date">
+                            <i class="far fa-calendar"></i> ${new Date(article.published_at).toLocaleDateString()}
+                        </span>
+                        ${article.author ? `
+                            <span class="article-author">
+                                <i class="far fa-user"></i> ${article.author}
+                            </span>
+                        ` : ''}
+                        <span class="article-source">
+                            <i class="far fa-newspaper"></i> ${article.source}
+                        </span>
+                    </div>
+                    <div class="article-tags">
+                        <span class="category-badge">${article.category}</span>
+                        <span class="sentiment-badge sentiment-${article.sentiment}">
+                            <i class="fas ${article.sentiment === 'positive' ? 'fa-smile' : 
+                                          article.sentiment === 'negative' ? 'fa-frown' : 
+                                          'fa-meh'}"></i>
+                            ${article.sentiment.charAt(0).toUpperCase() + article.sentiment.slice(1)}
+                        </span>
+                    </div>
+                </div>
+                <div class="article-summary">
+                    ${article.summary}
+                </div>
+                <div class="article-footer">
+                    <a href="/news/article/${article.id}/" class="read-more">
+                        <i class="fas fa-book-reader"></i> Read More
+                    </a>
+                    <a href="${article.url}" target="_blank" class="source-link">
+                        <i class="fas fa-external-link-alt"></i> View Source
+                    </a>
+                </div>
+            `;
+            
+            // Add animation class
+            articleCard.style.opacity = '0';
+            articleCard.style.transform = 'translateY(20px)';
+            
+            // Insert at the beginning of the grid
+            articleGrid.insertBefore(articleCard, articleGrid.firstChild);
+            
+            // Trigger animation
+            setTimeout(() => {
+                articleCard.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                articleCard.style.opacity = '1';
+                articleCard.style.transform = 'translateY(0)';
+            }, 50);
+            
+            // Remove "No Articles" message if it exists
+            const noArticles = document.querySelector('.no-articles');
+            if (noArticles) {
+                noArticles.remove();
+            }
+        }
+    };
+
+    newsSocket.onclose = function(e) {
+        console.error('News socket closed unexpectedly');
+    };
+
+    // Send user preferences if authenticated
+    {% if user.is_authenticated %}
+    newsSocket.onopen = function() {
+        newsSocket.send(JSON.stringify({
+            'type': 'get_preferences',
+            'user_id': '{{ user.id }}'
+        }));
+    };
+    {% endif %}
+</script>
+{% endblock %}
+{% endblock %}

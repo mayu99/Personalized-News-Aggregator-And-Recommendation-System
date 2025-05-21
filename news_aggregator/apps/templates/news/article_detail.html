@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} - Personalized News Aggregator{% endblock %}
+
+{% block content %}
+<div class="article-detail">
+    <h1>{{ article.title }}</h1>
+    <div class="article-meta">
+        <span class="published-date">{{ article.published_date }}</span>
+        <span class="source">Source: {{ article.source }}</span>
+    </div>
+    
+    {% if summary %}
+    <div class="article-summary">
+        <h2>Summary</h2>
+        <p>{{ summary }}</p>
+    </div>
+    {% endif %}
+    
+    <div class="article-content">
+        {{ article.content|linebreaks }}
+    </div>
+    
+    <a href="{% url 'article_list' %}" class="back-button">← Back to News</a>
+</div>
+{% endblock %} 

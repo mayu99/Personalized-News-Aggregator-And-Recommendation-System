@@ -1,0 +1,120 @@
+INFO 2025-05-12 20:18:41,319 autoreload Watching for file changes with StatReloader
+INFO 2025-05-12 20:19:01,095 autoreload Watching for file changes with StatReloader
+WARNING 2025-05-12 20:21:11,897 log Not Found: /ws/news/
+DEBUG 2025-05-12 20:24:09,388 connectionpool Starting new HTTPS connection (1): huggingface.co:443
+DEBUG 2025-05-12 20:24:09,610 connectionpool https://huggingface.co:443 "HEAD /facebook/bart-large-cnn/resolve/main/config.json HTTP/1.1" 200 0
+DEBUG 2025-05-12 20:24:10,216 connectionpool https://huggingface.co:443 "HEAD /facebook/bart-large-cnn/resolve/main/generation_config.json HTTP/1.1" 200 0
+INFO 2025-05-12 20:24:10,589 news_fetcher Fetching news from NewsAPI...
+DEBUG 2025-05-12 20:24:10,591 connectionpool Starting new HTTPS connection (1): newsapi.org:443
+DEBUG 2025-05-12 20:24:11,145 connectionpool https://newsapi.org:443 "GET /v2/top-headlines?country=us&pageSize=20&apiKey=ad8a926fb0674481896b835dc3b363cc HTTP/1.1" 200 None
+INFO 2025-05-12 20:24:11,147 news_fetcher Fetched 17 articles from NewsAPI
+INFO 2025-05-12 20:24:22,310 news_fetcher Created article: Pacers tie playoff record with 41-point halftime lead in Game 4 - NBA (Category: TECH, Sentiment: negative)
+DEBUG 2025-05-12 20:24:22,403 proactor_events Using proactor: IocpProactor
+ERROR 2025-05-12 20:24:24,437 news_fetcher Error processing article: Error 22 connecting to 127.0.0.1:6379. The remote computer refused the network connection.
+INFO 2025-05-12 20:24:32,875 news_fetcher Created article: NASA Just Got a Rare Look Inside Uranus – Here’s What They Found - SciTechDaily (Category: TECH, Sentiment: neutral)
+DEBUG 2025-05-12 20:24:32,877 proactor_events Using proactor: IocpProactor
+ERROR 2025-05-12 20:24:34,920 news_fetcher Error processing article: Error 22 connecting to 127.0.0.1:6379. The remote computer refused the network connection.
+INFO 2025-05-12 20:24:40,952 news_fetcher Created article: World’s largest EV battery maker CATL to raise at least $4bn - Financial Times (Category: TECH, Sentiment: neutral)
+DEBUG 2025-05-12 20:24:40,953 proactor_events Using proactor: IocpProactor
+ERROR 2025-05-12 20:24:42,977 news_fetcher Error processing article: Error 22 connecting to 127.0.0.1:6379. The remote computer refused the network connection.
+INFO 2025-05-12 20:24:49,386 news_fetcher Created article: Colorado Rockies fire manager Bud Black a day after losing 21-0 to San Diego - AP News (Category: SPORTS, Sentiment: negative)
+DEBUG 2025-05-12 20:24:49,386 proactor_events Using proactor: IocpProactor
+ERROR 2025-05-12 20:24:51,404 news_fetcher Error processing article: Error 22 connecting to 127.0.0.1:6379. The remote computer refused the network connection.
+INFO 2025-05-12 20:24:56,441 news_fetcher Created article: The Last of Us Recap: Don’t Go in the Basement - Vulture (Category: HEALTH, Sentiment: negative)
+DEBUG 2025-05-12 20:24:56,441 proactor_events Using proactor: IocpProactor
+ERROR 2025-05-12 20:24:58,484 news_fetcher Error processing article: Error 22 connecting to 127.0.0.1:6379. The remote computer refused the network connection.
+INFO 2025-05-12 20:25:04,341 news_fetcher Created article: Trump backs Putin’s proposal for Ukraine talks, undermining allies - The Washington Post (Category: TECH, Sentiment: positive)
+DEBUG 2025-05-12 20:25:04,342 proactor_events Using proactor: IocpProactor
+ERROR 2025-05-12 20:25:06,390 news_fetcher Error processing article: Error 22 connecting to 127.0.0.1:6379. The remote computer refused the network connection.
+INFO 2025-05-12 20:25:13,373 news_fetcher Created article: Newark airport flights to be reduced amid traffic control blackouts, feds say - NJ.com (Category: TECH, Sentiment: negative)
+DEBUG 2025-05-12 20:25:13,374 proactor_events Using proactor: IocpProactor
+ERROR 2025-05-12 20:25:15,419 news_fetcher Error processing article: Error 22 connecting to 127.0.0.1:6379. The remote computer refused the network connection.
+INFO 2025-05-12 20:25:23,519 news_fetcher Created article: Rival weight loss drugs go head-to-head with clear winner - BBC (Category: ENTERTAINMENT, Sentiment: positive)
+DEBUG 2025-05-12 20:25:23,519 proactor_events Using proactor: IocpProactor
+ERROR 2025-05-12 20:25:25,545 news_fetcher Error processing article: Error 22 connecting to 127.0.0.1:6379. The remote computer refused the network connection.
+INFO 2025-05-12 20:25:30,646 news_fetcher Created article: Trump heads to Saudi Arabia eyeing more investment in US - BBC (Category: POLITICS, Sentiment: neutral)
+DEBUG 2025-05-12 20:25:30,646 proactor_events Using proactor: IocpProactor
+ERROR 2025-05-12 20:25:32,695 news_fetcher Error processing article: Error 22 connecting to 127.0.0.1:6379. The remote computer refused the network connection.
+WARNING 2025-05-12 20:25:32,697 news_fetcher Skipping article due to missing fields (content): Massive explosion levels New Jersey home, rocks neighborhood - ABC News
+INFO 2025-05-12 20:25:36,767 news_fetcher Created article: 2025 NCAA Softball Tournament bracket, schedule revealed - On3.com (Category: SPORTS, Sentiment: positive)
+DEBUG 2025-05-12 20:25:36,768 proactor_events Using proactor: IocpProactor
+ERROR 2025-05-12 20:25:38,823 news_fetcher Error processing article: Error 22 connecting to 127.0.0.1:6379. The remote computer refused the network connection.
+INFO 2025-05-12 20:25:38,824 news_fetcher Article already exists: Here's what U.S. Catholics are saying about the election of Pope Leo XIV - NPR
+INFO 2025-05-12 20:25:44,270 news_fetcher Created article: First group of 49 white South Africans leaves for the US after Trump offered them refugee status - AP News (Category: WORLD, Sentiment: positive)
+DEBUG 2025-05-12 20:25:44,270 proactor_events Using proactor: IocpProactor
+ERROR 2025-05-12 20:25:46,303 news_fetcher Error processing article: Error 22 connecting to 127.0.0.1:6379. The remote computer refused the network connection.
+INFO 2025-05-12 20:25:46,304 news_fetcher Article already exists: Gisele Bündchen Shares First Photos of Her New Baby Son, Explains Why She's Been 'Quiet' on Social Media Since His Birth - Yahoo News Canada
+INFO 2025-05-12 20:25:51,231 news_fetcher Created article: 'Thunderbolts*' strikes gold again at the weekend box office - Entertainment Weekly (Category: ENTERTAINMENT, Sentiment: positive)
+DEBUG 2025-05-12 20:25:51,232 proactor_events Using proactor: IocpProactor
+ERROR 2025-05-12 20:25:53,281 news_fetcher Error processing article: Error 22 connecting to 127.0.0.1:6379. The remote computer refused the network connection.
+INFO 2025-05-12 20:25:59,516 news_fetcher Created article: This 24,000mAh Anker Laptop Power Bank Is Near a Record Low, Amazon Clears Stock At 40% Off - Gizmodo (Category: BUSINESS, Sentiment: negative)
+DEBUG 2025-05-12 20:25:59,517 proactor_events Using proactor: IocpProactor
+ERROR 2025-05-12 20:26:01,528 news_fetcher Error processing article: Error 22 connecting to 127.0.0.1:6379. The remote computer refused the network connection.
+WARNING 2025-05-12 20:26:01,529 news_fetcher Skipping article due to missing fields (content): Twin Cities breaks 125-year-old temperature record; 100 in northwest Minnesota - Bring Me The News
+INFO 2025-05-12 20:26:01,531 news_fetcher Articles processed - Created: 13, Skipped: 2, Already exist: 2
+INFO 2025-05-12 20:26:29,189 autoreload Watching for file changes with StatReloader
+WARNING 2025-05-12 20:26:47,054 log Not Found: /ws/news/
+WARNING 2025-05-12 20:26:47,307 log Not Found: /favicon.ico
+WARNING 2025-05-12 20:27:22,612 log Not Found: /ws/news/
+DEBUG 2025-05-12 20:28:06,768 PngImagePlugin STREAM b'IHDR' 16 13
+DEBUG 2025-05-12 20:28:06,769 PngImagePlugin STREAM b'sRGB' 41 1
+DEBUG 2025-05-12 20:28:06,769 PngImagePlugin STREAM b'gAMA' 54 4
+DEBUG 2025-05-12 20:28:06,769 PngImagePlugin STREAM b'pHYs' 70 9
+DEBUG 2025-05-12 20:28:06,769 PngImagePlugin STREAM b'IDAT' 91 56010
+DEBUG 2025-05-12 20:28:06,769 Image Importing AvifImagePlugin
+DEBUG 2025-05-12 20:28:06,771 Image Importing BlpImagePlugin
+DEBUG 2025-05-12 20:28:06,775 Image Importing BmpImagePlugin
+DEBUG 2025-05-12 20:28:06,775 Image Importing BufrStubImagePlugin
+DEBUG 2025-05-12 20:28:06,777 Image Importing CurImagePlugin
+DEBUG 2025-05-12 20:28:06,779 Image Importing DcxImagePlugin
+DEBUG 2025-05-12 20:28:06,782 Image Importing DdsImagePlugin
+DEBUG 2025-05-12 20:28:06,787 Image Importing EpsImagePlugin
+DEBUG 2025-05-12 20:28:06,790 Image Importing FitsImagePlugin
+DEBUG 2025-05-12 20:28:06,793 Image Importing FliImagePlugin
+DEBUG 2025-05-12 20:28:06,794 Image Importing FpxImagePlugin
+DEBUG 2025-05-12 20:28:06,797 Image Image: failed to import FpxImagePlugin: No module named 'olefile'
+DEBUG 2025-05-12 20:28:06,797 Image Importing FtexImagePlugin
+DEBUG 2025-05-12 20:28:06,799 Image Importing GbrImagePlugin
+DEBUG 2025-05-12 20:28:06,800 Image Importing GifImagePlugin
+DEBUG 2025-05-12 20:28:06,800 Image Importing GribStubImagePlugin
+DEBUG 2025-05-12 20:28:06,801 Image Importing Hdf5StubImagePlugin
+DEBUG 2025-05-12 20:28:06,803 Image Importing IcnsImagePlugin
+DEBUG 2025-05-12 20:28:06,821 Image Importing IcoImagePlugin
+DEBUG 2025-05-12 20:28:06,824 Image Importing ImImagePlugin
+DEBUG 2025-05-12 20:28:06,827 Image Importing ImtImagePlugin
+DEBUG 2025-05-12 20:28:06,828 Image Importing IptcImagePlugin
+DEBUG 2025-05-12 20:28:06,829 Image Importing JpegImagePlugin
+DEBUG 2025-05-12 20:28:06,830 Image Importing Jpeg2KImagePlugin
+DEBUG 2025-05-12 20:28:06,830 Image Importing McIdasImagePlugin
+DEBUG 2025-05-12 20:28:06,831 Image Importing MicImagePlugin
+DEBUG 2025-05-12 20:28:06,833 Image Image: failed to import MicImagePlugin: No module named 'olefile'
+DEBUG 2025-05-12 20:28:06,833 Image Importing MpegImagePlugin
+DEBUG 2025-05-12 20:28:06,834 Image Importing MpoImagePlugin
+DEBUG 2025-05-12 20:28:06,841 Image Importing MspImagePlugin
+DEBUG 2025-05-12 20:28:06,842 Image Importing PalmImagePlugin
+DEBUG 2025-05-12 20:28:06,846 Image Importing PcdImagePlugin
+DEBUG 2025-05-12 20:28:06,847 Image Importing PcxImagePlugin
+DEBUG 2025-05-12 20:28:06,847 Image Importing PdfImagePlugin
+DEBUG 2025-05-12 20:28:06,855 Image Importing PixarImagePlugin
+DEBUG 2025-05-12 20:28:06,857 Image Importing PngImagePlugin
+DEBUG 2025-05-12 20:28:06,857 Image Importing PpmImagePlugin
+DEBUG 2025-05-12 20:28:06,857 Image Importing PsdImagePlugin
+DEBUG 2025-05-12 20:28:06,860 Image Importing QoiImagePlugin
+DEBUG 2025-05-12 20:28:06,863 Image Importing SgiImagePlugin
+DEBUG 2025-05-12 20:28:06,868 Image Importing SpiderImagePlugin
+DEBUG 2025-05-12 20:28:06,871 Image Importing SunImagePlugin
+DEBUG 2025-05-12 20:28:06,873 Image Importing TgaImagePlugin
+DEBUG 2025-05-12 20:28:06,874 Image Importing TiffImagePlugin
+DEBUG 2025-05-12 20:28:06,874 Image Importing WebPImagePlugin
+DEBUG 2025-05-12 20:28:06,925 Image Importing WmfImagePlugin
+DEBUG 2025-05-12 20:28:06,928 Image Importing XbmImagePlugin
+DEBUG 2025-05-12 20:28:06,930 Image Importing XpmImagePlugin
+DEBUG 2025-05-12 20:28:06,931 Image Importing XVThumbImagePlugin
+DEBUG 2025-05-12 20:29:15,584 PngImagePlugin STREAM b'IHDR' 16 13
+DEBUG 2025-05-12 20:29:15,585 PngImagePlugin STREAM b'sRGB' 41 1
+DEBUG 2025-05-12 20:29:15,585 PngImagePlugin STREAM b'gAMA' 54 4
+DEBUG 2025-05-12 20:29:15,586 PngImagePlugin STREAM b'pHYs' 70 9
+DEBUG 2025-05-12 20:29:15,587 PngImagePlugin STREAM b'IDAT' 91 65445
+WARNING 2025-05-12 20:32:05,227 log Not Found: /ws/news/
+INFO 2025-05-12 21:13:20,931 autoreload Watching for file changes with StatReloader
+WARNING 2025-05-12 21:13:50,969 log Not Found: /ws/news/
